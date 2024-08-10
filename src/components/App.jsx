@@ -2,6 +2,7 @@ import { useRef } from "react";
 import Contact from "./Contact/Contact";
 import Header from "./Header/Header";
 import Navbar from "./Navbar/Navbar";
+import Projects from "./Projects/Projects";
 
 function App() {
   const headerRef = useRef();
@@ -26,9 +27,7 @@ function App() {
       <section id="skills">
         <h1>Section</h1>
       </section>
-      <section id="projects">
-        <h1>Section</h1>
-      </section>
+      <Projects refProps={projectsRef} />
       <Contact refProps={contactRef} />
     </>
   );

@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useState } from "react";
+import { useEffect, useMemo, useReducer, useState } from "react";
 import styles from "./Navbar.module.css";
 
 const initialHighlight = {
@@ -45,19 +45,16 @@ function Navbar({
     useReducer(reducer, initialHighlight);
   const [scrollAllowed, setScrollAllowed] = useState(true);
 
+  const sections = useMemo(() => {
+    return document.querySelectorAll("section");
+  }, []);
+
   useEffect(() => {
     function handleScroll() {
       if (scrollAllowed) {
-        const sections = document.querySelectorAll("section");
         let currentSection = "home";
 
-        sections.forEach((section) => {
-          const sectionTop = section.offsetTop;
-          const sectionHeight = section.clientHeight;
-          if (window.scrollY >= sectionTop - sectionHeight / 3) {
-            currentSection = section.getAttribute("id");
-          }
-        });
+        currentSection = sectionInView(sections, currentSection);
 
         dispatch({ type: currentSection });
       }
@@ -65,7 +62,9 @@ function Navbar({
 
     window.addEventListener("scroll", handleScroll);
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, [scrollAllowed]);
 
   const handleMouseEnter = (section) => {
@@ -73,37 +72,31 @@ function Navbar({
   };
 
   const handleMouseLeave = () => {
-    const sections = document.querySelectorAll("section");
-    let currentSection = "home";
     if (scrollAllowed) {
-      sections.forEach((section) => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if (window.scrollY >= sectionTop - sectionHeight / 3) {
-          currentSection = section.getAttribute("id");
-        }
-      });
+      let currentSection = "home";
+      currentSection = sectionInView(sections, currentSection);
 
       dispatch({ type: currentSection });
     }
   };
-  const handleScrollToSection = (section, runAfter) => {
-    dispatch({ type: section.current.getAttribute("id") });
-    onScrollToSection(section);
-    runAfter();
-  };
 
   const handleLinkClick = (section) => {
-    setScrollAllowed(false);
+    clearTimeout();
+    const currentSection = section.current.getAttribute("id");
+    const allowScrollDelay = Math.min(
+      570,
+      Math.abs(
+        (section.current.offsetTop - window.scrollY) / (window.scrollY || 1)
+      ) * 700
+    );
 
-    handleScrollToSection(section, () => {
-      const sectionTop = section.offsetTop;
-      const sectionHeight = section.clientHeight;
-      if (window.scrollY >= sectionTop - sectionHeight / 3) {
-        setScrollAllowed(true);
-        console.log("running");
-      }
-    });
+    dispatch({ type: currentSection });
+    setScrollAllowed(false);
+    onScrollToSection(section);
+
+    setTimeout(() => {
+      setScrollAllowed(true);
+    }, allowScrollDelay);
   };
 
   return (
@@ -154,3 +147,15 @@ function Navbar({
 }
 
 export default Navbar;
+function sectionInView(sections, currentSection) {
+  const middle = window.scrollY + document.documentElement.clientHeight / 3;
+  let currentSectionTop;
+  for (let i = sections.length - 1; i >= 0; i--) {
+    currentSectionTop = sections[i].offsetTop;
+    if (middle >= currentSectionTop) {
+      currentSection = sections[i].id;
+      break;
+    }
+  }
+  return currentSection;
+}
