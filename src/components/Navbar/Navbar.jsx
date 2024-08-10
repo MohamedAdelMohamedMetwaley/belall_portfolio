@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from "react";
+import { useEffect, useReducer, useState } from "react";
 import styles from "./Navbar.module.css";
 
 const initialHighlight = {
@@ -34,15 +34,48 @@ function reducer(state, action) {
   }
 }
 
-function Navbar() {
+function Navbar({
+  onScrollToSection,
+  headerRef,
+  skillsRef,
+  projectsRef,
+  contactRef,
+}) {
   const [{ activeSection, highlightPosition, highlightWidth }, dispatch] =
     useReducer(reducer, initialHighlight);
+  const [scrollAllowed, setScrollAllowed] = useState(true);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const sections = document.querySelectorAll("section");
-      let currentSection = "home";
+    function handleScroll() {
+      if (scrollAllowed) {
+        const sections = document.querySelectorAll("section");
+        let currentSection = "home";
 
+        sections.forEach((section) => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.clientHeight;
+          if (window.scrollY >= sectionTop - sectionHeight / 3) {
+            currentSection = section.getAttribute("id");
+          }
+        });
+
+        dispatch({ type: currentSection });
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [scrollAllowed]);
+
+  const handleMouseEnter = (section) => {
+    dispatch({ type: section });
+  };
+
+  const handleMouseLeave = () => {
+    const sections = document.querySelectorAll("section");
+    let currentSection = "home";
+    if (scrollAllowed) {
       sections.forEach((section) => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.clientHeight;
@@ -52,13 +85,26 @@ function Navbar() {
       });
 
       dispatch({ type: currentSection });
-    };
+    }
+  };
+  const handleScrollToSection = (section, runAfter) => {
+    dispatch({ type: section.current.getAttribute("id") });
+    onScrollToSection(section);
+    runAfter();
+  };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const handleLinkClick = (section) => {
+    setScrollAllowed(false);
 
-  useEffect(function () {}, [activeSection]);
+    handleScrollToSection(section, () => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.clientHeight;
+      if (window.scrollY >= sectionTop - sectionHeight / 3) {
+        setScrollAllowed(true);
+        console.log("running");
+      }
+    });
+  };
 
   return (
     <nav className={styles.navbar}>
@@ -70,16 +116,36 @@ function Navbar() {
         }}
       />
       <ul>
-        <li className={activeSection === "home" ? "active" : ""}>
+        <li
+          onClick={() => handleLinkClick(headerRef)}
+          className={activeSection === "home" ? "active" : ""}
+          onMouseEnter={() => handleMouseEnter("home")}
+          onMouseLeave={handleMouseLeave}
+        >
           <button>Home</button>
         </li>
-        <li className={activeSection === "skills" ? "active" : ""}>
+        <li
+          onClick={() => handleLinkClick(skillsRef)}
+          className={activeSection === "skills" ? "active" : ""}
+          onMouseEnter={() => handleMouseEnter("skills")}
+          onMouseLeave={handleMouseLeave}
+        >
           <button>Skills</button>
         </li>
-        <li className={activeSection === "projects" ? "active" : ""}>
+        <li
+          onClick={() => handleLinkClick(projectsRef)}
+          className={activeSection === "projects" ? "active" : ""}
+          onMouseEnter={() => handleMouseEnter("projects")}
+          onMouseLeave={handleMouseLeave}
+        >
           <button>Projects</button>
         </li>
-        <li className={activeSection === "contact" ? "active" : ""}>
+        <li
+          onClick={() => handleLinkClick(contactRef)}
+          className={activeSection === "contact" ? "active" : ""}
+          onMouseEnter={() => handleMouseEnter("contact")}
+          onMouseLeave={handleMouseLeave}
+        >
           <button>Contact</button>
         </li>
       </ul>
