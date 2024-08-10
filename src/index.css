@@ -1,0 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+:root {
+  --green: #19a974;
+  --dark-grey: #111111;
+  --grey: #333;
+  --light-grey: #ccc;
+  --blue: #2750cc;
+  --light-blue: #7fc9eb;
+  --yellow: #ffcb70;
+  --purple: #4158d0;
+  --spacing: 0.5rem;
+  --spacing2s: calc(var(--spacing) / 2);
+  --spacing2x: calc(var(--spacing) * 2);
+  --radius: 1.5rem;
+  --font-s: 0.8rem;
+  --font-m: 1rem;
+  --font-2m: 1.25rem;
+  --font-x: 1.5rem;
+  --font-2x: 2rem;
+  --font-3x: 4rem;
+  --bold: 600;
+  --main-font: "Inter", var(--f-sans);
+  --f-sans: -apple-system, system-ui, BlinkMacSystemFont, "Helvetica", "Arial",
+    sans-serif;
+  --f-serif: Georgia, "Times New Roman", Times, serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--main-font);
+  background-color: var(--dark-grey);
+  color: white;
+}
+
+section {
+  height: 100vh;
+}

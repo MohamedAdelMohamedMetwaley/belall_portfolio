@@ -1,0 +1,23 @@
+.section {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+:global(#home) h1 {
+  font-size: var(--font-3x);
+  margin: var(--spacing) 0;
+}
+
+:global(#home) p {
+  font-size: var(--font-2m);
+  color: var(--light-grey);
+}
+
+.imageContainer {
+}
+
+.imageContainer img {
+  width: 400px;
+  border-radius: var(--radius);
+}
