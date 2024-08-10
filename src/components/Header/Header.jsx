@@ -1,8 +1,8 @@
 import styles from "./Header.module.css";
 
-function Header() {
+function Header({ refProps }) {
   return (
-    <section className={styles.section} id="home">
+    <section ref={refProps} className={styles.section} id="home">
       <div>
         <h1>Hello, I&apos;m Belall</h1>
         <p>

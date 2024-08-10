@@ -4,11 +4,14 @@
   --green: #19a974;
   --dark-grey: #111111;
   --grey: #333;
+  --grey2: #222;
   --light-grey: #ccc;
   --blue: #2750cc;
   --light-blue: #7fc9eb;
   --yellow: #ffcb70;
   --purple: #4158d0;
+  --btn-color: var(--grey2);
+  --btn-hover: var(--dark-grey);
   --spacing: 0.5rem;
   --spacing2s: calc(var(--spacing) / 2);
   --spacing2x: calc(var(--spacing) * 2);
@@ -39,5 +42,6 @@ body {
 }
 
 section {
-  height: 100vh;
+  min-height: 100vh;
+  min-height: 100svh;
 }
