@@ -22,8 +22,10 @@ function Navbar({
     useReducer(reducer, initialHighlight);
   const [isScrolling, setIsScrolling] = useState(false);
   const [hoveredElement, setHoveredElement] = useState(null);
-  const timeoutId = useRef(null);
   const [sections, setSections] = useState([]);
+  const [navIsHidden, setNavIsHidden] = useState(false);
+  const timeoutId = useRef(null);
+  const navTimeoutId = useRef(null);
   const ulElements = [
     ["home", headerRef],
     ["skills", skillsRef],
@@ -31,16 +33,12 @@ function Navbar({
     ["contact", contactRef],
   ];
   //TODO: a simple solution for highlighting navbar on small devices is to just not render the .highlight div and use .active:after instead
-  //TODO: make the navbar only appear when user is scrolling
   useEffect(() => {
     // This will run after the component has mounted and the DOM is ready
     const sectionElements = document.querySelectorAll("section");
     setSections(sectionElements);
   }, []); // Empty dependency array ensures this effect runs only once
 
-  const navTimeoutId = useRef(null);
-  //TODO: turn navIsHidden to a useRef
-  const [navIsHidden, setNavIsHidden] = useState(false);
   useEffect(() => {
     // This handles changing the highligted section on scroll
     function handleScroll() {
