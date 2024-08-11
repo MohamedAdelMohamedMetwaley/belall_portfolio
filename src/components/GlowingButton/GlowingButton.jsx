@@ -1,8 +1,8 @@
 import "./GlowingButton.css";
 
-function GlowingButton() {
+function GlowingButton({ onScroll }) {
   return (
-    <button className="button glow-effect">
+    <button onClick={onScroll} className="button glow-effect">
       Contact Me
       <svg className="glow-container">
         <rect

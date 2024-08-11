@@ -13,6 +13,7 @@
   z-index: 10;
   overflow: hidden;
   animation: revealNavbar 1s ease-out forwards;
+  transition: 1s;
 }
 
 .navbar ul {
@@ -56,6 +57,10 @@
   transition: 0.3s ease-in-out;
   transform: translateX(-50%);
   animation: fadeInNavbar 1s 1s forwards;
+}
+
+.hidden {
+  translate: -50% -100px;
 }
 
 @keyframes revealNavbar {

@@ -23,7 +23,10 @@ function App() {
         skillsRef={skillsRef}
         contactRef={contactRef}
       />
-      <Header refProps={headerRef} />
+      <Header
+        refProps={headerRef}
+        onScroll={() => onScrollToSection(contactRef)}
+      />
       <section id="skills">
         <h1>Section</h1>
       </section>

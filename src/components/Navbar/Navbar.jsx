@@ -31,12 +31,16 @@ function Navbar({
     ["contact", contactRef],
   ];
   //TODO: a simple solution for highlighting navbar on small devices is to just not render the .highlight div and use .active:after instead
+  //TODO: make the navbar only appear when user is scrolling
   useEffect(() => {
     // This will run after the component has mounted and the DOM is ready
     const sectionElements = document.querySelectorAll("section");
     setSections(sectionElements);
   }, []); // Empty dependency array ensures this effect runs only once
 
+  const navTimeoutId = useRef(null);
+  //TODO: turn navIsHidden to a useRef
+  const [navIsHidden, setNavIsHidden] = useState(false);
   useEffect(() => {
     // This handles changing the highligted section on scroll
     function handleScroll() {
@@ -47,6 +51,20 @@ function Navbar({
           : sectionInView(sections, currentSection);
         dispatch({ type: currentSection });
       }
+      //when we scroll, check if the navIsHidden, if it is then show it
+      if (navIsHidden) setNavIsHidden(false);
+      //If we are scrolling and there is a pending timeout function to hide the navbar, delete that function
+      if (navTimeoutId.current) {
+        clearTimeout(navTimeoutId.current);
+      }
+      //Hide the navbar after two seconds of not scrolling
+      navTimeoutId.current = setTimeout(() => {
+        setNavIsHidden(true);
+      }, 3000);
+      //If we are in the very top of the page don't hide the navbar
+      if (!window.scrollY) {
+        clearTimeout(navTimeoutId.current);
+      }
     }
 
     window.addEventListener("scroll", handleScroll);
@@ -54,12 +72,13 @@ function Navbar({
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [isScrolling, hoveredElement, sections]);
+  }, [isScrolling, hoveredElement, sections, navTimeoutId, navIsHidden]);
 
   const handleMouseEnter = (section) => {
     if (!isScrolling) {
       dispatch({ type: section });
       setHoveredElement(section);
+      setNavIsHidden(false);
     }
   };
 
@@ -94,7 +113,7 @@ function Navbar({
   };
 
   return (
-    <nav className={styles.navbar}>
+    <nav className={`${styles.navbar} ${navIsHidden ? styles.hidden : ""}`}>
       <div
         className="highlight"
         style={{

@@ -13,9 +13,10 @@
 
 .glow-effect {
   --glow-line-color: #fff;
+  /* --glow-line-color: linear-gradient(300deg, #e94560, #16213e, #1a1a2e); */
   --glow-line-thickness: 2px;
   --glow-line-length: 20px;
-  --glow-blur-color: #fff;
+  --glow-blur-color: white;
   --glow-blur-size: 5px;
   --glow-offset: 0px;
   --animation-speed: 1500ms;
@@ -70,7 +71,7 @@
   stroke-width: var(--glow-blur-size);
 }
 
-.glow-effect:is(:hover, :focus) .glow-container {
+.glow-effect:hover .glow-container {
   animation: glow-visibility ease-in-out var(--animation-speed) infinite;
 }
 
