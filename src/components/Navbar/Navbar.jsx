@@ -1,6 +1,10 @@
 import { useEffect, useReducer, useRef, useState } from "react";
 import styles from "./Navbar.module.css";
 
+const windowWidth = window.innerWidth;
+const onMobile = windowWidth < 1024;
+const SCALE = onMobile ? 1.25 : 1;
+
 const initialHighlight = {
   activeSection: "home",
   highlightPosition: 58,
@@ -26,7 +30,7 @@ function Navbar({
     ["projects", projectsRef],
     ["contact", contactRef],
   ];
-
+  //TODO: a simple solution for highlighting navbar on small devices is to just not render the .highlight div and use .active:after instead
   useEffect(() => {
     // This will run after the component has mounted and the DOM is ready
     const sectionElements = document.querySelectorAll("section");
@@ -38,11 +42,9 @@ function Navbar({
     function handleScroll() {
       if (!isScrolling) {
         let currentSection = "home";
-
         currentSection = hoveredElement
           ? hoveredElement
           : sectionInView(sections, currentSection);
-
         dispatch({ type: currentSection });
       }
     }
@@ -52,22 +54,21 @@ function Navbar({
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isScrolling]);
+  }, [isScrolling, hoveredElement, sections]);
 
   const handleMouseEnter = (section) => {
-    setHoveredElement(section);
     if (!isScrolling) {
       dispatch({ type: section });
+      setHoveredElement(section);
     }
   };
 
   const handleMouseLeave = () => {
-    setHoveredElement(null);
     if (!isScrolling) {
       let currentSection = "home";
       currentSection = sectionInView(sections, currentSection);
       dispatch({ type: currentSection });
+      setHoveredElement(null);
     }
   };
 
@@ -97,8 +98,8 @@ function Navbar({
       <div
         className="highlight"
         style={{
-          left: `${highlightPosition}px`,
-          width: `${highlightWidth}px`,
+          left: `${highlightPosition * SCALE}px`,
+          width: `${highlightWidth * SCALE}px`,
         }}
       />
       <ul>
@@ -122,13 +123,12 @@ export default Navbar;
 function sectionInView(sections, currentSection) {
   const middle = window.scrollY + document.documentElement.clientHeight / 3;
   let currentSectionTop;
-  for (let i = sections.length - 1; i >= 0; i--) {
-    currentSectionTop = sections[i].offsetTop;
+  sections.forEach((section) => {
+    currentSectionTop = section.offsetTop;
     if (middle >= currentSectionTop) {
-      currentSection = sections[i].id;
-      break;
+      currentSection = section.id;
     }
-  }
+  });
   return currentSection;
 }
 
@@ -136,10 +136,8 @@ function reducer(state, action) {
   switch (action.type) {
     case "home":
       return initialHighlight;
-
     case "skills":
       return {
-        ...state,
         activeSection: "skills",
         highlightPosition: 140,
         highlightWidth: 100,

@@ -14,7 +14,8 @@
   --btn-hover: var(--dark-grey);
   --spacing: 0.5rem;
   --spacing2s: calc(var(--spacing) / 2);
-  --spacing2x: calc(var(--spacing) * 2);
+  --spacingx: calc(var(--spacing) * 2);
+  --spacing2x: calc(var(--spacing) * 4);
   --radius: 1.5rem;
   --font-s: 0.8rem;
   --font-m: 1rem;
@@ -32,6 +33,10 @@
 * {
   margin: 0;
   padding: 0;
+}
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 

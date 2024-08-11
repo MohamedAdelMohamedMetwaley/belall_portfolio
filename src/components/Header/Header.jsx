@@ -1,3 +1,4 @@
+import GlowingButton from "../GlowingButton/GlowingButton";
 import styles from "./Header.module.css";
 
 function Header({ refProps }) {
@@ -9,6 +10,7 @@ function Header({ refProps }) {
           I&apos;m a Highly motivated CS student, strong in problem solving and
           programming.
         </p>
+        <GlowingButton />
       </div>
       <div className={styles.imageContainer}>
         <img src="./images/bellal.jpg" alt="profile-photo" />
