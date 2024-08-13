@@ -4,7 +4,7 @@ import styles from "./Header.module.css";
 function Header({ refProps, onScroll }) {
   return (
     <section ref={refProps} className={styles.section} id="home">
-      <div>
+      <div className={styles.introContainer}>
         <h1>Hello, I&apos;m Belall</h1>
         <p>
           I&apos;m a Highly motivated CS student, strong in problem solving and

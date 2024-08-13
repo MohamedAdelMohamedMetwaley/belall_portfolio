@@ -3,6 +3,7 @@ import Contact from "./Contact/Contact";
 import Header from "./Header/Header";
 import Navbar from "./Navbar/Navbar";
 import Projects from "./Projects/Projects";
+import Skills from "./Skills/Skills";
 
 function App() {
   const headerRef = useRef();
@@ -27,9 +28,7 @@ function App() {
         refProps={headerRef}
         onScroll={() => onScrollToSection(contactRef)}
       />
-      <section id="skills">
-        <h1>Section</h1>
-      </section>
+      <Skills />
       <Projects refProps={projectsRef} />
       <Contact refProps={contactRef} />
     </>

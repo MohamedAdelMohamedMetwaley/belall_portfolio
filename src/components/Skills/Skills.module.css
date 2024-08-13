@@ -1,0 +1,61 @@
+:global(#skills) {
+  background-color: white;
+  color: #111;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.certSlider {
+  width: 100%;
+  height: 200px;
+  overflow-x: clip;
+}
+
+.certSlider > ul {
+  width: 100%;
+  min-width: calc(250px * var(--quantity));
+  position: relative;
+  list-style-type: none;
+}
+
+.certSlider > ul > li {
+  position: absolute;
+  right: 100%;
+  animation: slideLeft var(--time) linear infinite;
+  animation-delay: calc(
+    ((var(--time) / var(--quantity))) * (var(--index) - 1) - 13s
+  );
+  transition: 0.5s;
+}
+
+.certSlider > ul:hover > li {
+  filter: grayscale(1);
+  animation-play-state: paused;
+  scale: 0.6;
+}
+
+.certSlider > ul > li:hover {
+  filter: grayscale(0);
+  scale: 2;
+}
+
+.certSlider > ul > li:hover + li {
+  transform: translateX(-100px);
+}
+.certSlider > ul > li:has(+ li:hover) {
+  transform: translateX(100px);
+}
+
+.certSlider > ul > li > img {
+  aspect-ratio: 1.29;
+  height: 200px;
+  border-radius: var(--radius);
+}
+@keyframes slideLeft {
+  to {
+    right: -300px;
+  }
+}

@@ -4,6 +4,11 @@
   align-items: center;
 }
 
+:global(#home) {
+  opacity: 0;
+  animation: fadeIn 2s forwards;
+}
+
 :global(#home) h1 {
   font-size: var(--font-3x);
   margin: var(--spacing) 0;
@@ -14,10 +19,13 @@
   color: var(--light-grey);
 }
 
-.imageContainer {
-}
-
 .imageContainer img {
   width: 400px;
   border-radius: var(--radius);
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
 }
