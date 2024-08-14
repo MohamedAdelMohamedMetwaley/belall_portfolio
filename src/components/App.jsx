@@ -28,7 +28,7 @@ function App() {
         refProps={headerRef}
         onScroll={() => onScrollToSection(contactRef)}
       />
-      <Skills />
+      <Skills refProps={skillsRef} />
       <Projects refProps={projectsRef} />
       <Contact refProps={contactRef} />
     </>

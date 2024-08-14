@@ -1,9 +1,9 @@
 import CurvedSectionDivider from "../CurvedSectionDivider/CurvedSectionDivider";
 import styles from "./Skills.module.css";
 
-function Skills() {
+function Skills({ refProps }) {
   return (
-    <section id="skills">
+    <section ref={refProps} id="skills">
       <CurvedSectionDivider fill="#111" />
       {/* <h1>Skills</h1> */}
       <div className={styles.certSlider}>
@@ -50,7 +50,6 @@ function Skills() {
           </li>
         </ul>
       </div>
-      <CurvedSectionDivider fill="#111" isRotated={true} />
     </section>
   );
 }
