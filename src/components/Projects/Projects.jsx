@@ -25,7 +25,7 @@ function Projects({ refProps }) {
   function handleHoverStraw() {
     setMoveContent(
       <>
-        <img src="../../public/images/straw.png" alt="straw-recycling" />
+        <img src="./images/straw.png" alt="straw-recycling" />
         {/* <p>
           Straw Recycling is a company committed to creating a greener future.
           We offer innovative and sustainable solutions to combat plastic
@@ -39,7 +39,7 @@ function Projects({ refProps }) {
   function handleHoverMediator() {
     setMoveContent(
       <>
-        <img src="../../public/images/mediator.png" alt="mediator-app" />
+        <img src="./images/mediator.png" alt="mediator-app" />
         {/* <p>
           Bridging the Gap Between Doctors and Patients Mediator is a healthcare
           application designed to streamline patient care and minimize
@@ -50,9 +50,7 @@ function Projects({ refProps }) {
     );
   }
   function handleHoverBiber() {
-    setMoveContent(
-      <img src="../../public/images/biber.png" alt="biber-project" />
-    );
+    setMoveContent(<img src="./images/biber.png" alt="biber-project" />);
   }
   //TODO: create case study websites for second and third project
   return (
