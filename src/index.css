@@ -14,8 +14,9 @@
   --bg-color2: white;
   --text-color: white;
   --text-color2: var(--dark-grey);
-  --btn-color: var(--grey2);
-  --btn-hover: var(--dark-grey);
+  --btn-color: var(--text-color);
+  --btn-text-color: var(--text-color2);
+  --btn-hover: var(--light-grey);
   --spacing: 0.5rem;
   --spacing2s: calc(var(--spacing) / 2);
   --spacingx: calc(var(--spacing) * 2);

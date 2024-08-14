@@ -10,7 +10,7 @@ function Header({ refProps, onScroll }) {
           I&apos;m a Highly motivated CS student, strong in problem solving and
           programming.
         </p>
-        <GlowingButton onScroll={onScroll} />
+        <GlowingButton onClick={onScroll}>Contact Me</GlowingButton>
       </div>
       <div className={styles.imageContainer}>
         <img src="./images/bellal.jpg" alt="profile-photo" />

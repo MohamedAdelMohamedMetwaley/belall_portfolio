@@ -1,5 +1,5 @@
 :global(#skills) {
-  background-color: white;
+  background-color: var(--bg-color);
   color: #111;
   position: relative;
   display: flex;

@@ -1,5 +1,6 @@
 import "./Contact.css";
 import Swal from "sweetalert2";
+import GlowingButton from "../GlowingButton/GlowingButton";
 
 const access_key = "";
 const EMAIL = "";
@@ -42,13 +43,13 @@ function Contact({ refProps }) {
   return (
     <section ref={refProps} id="contact">
       <form onSubmit={onSubmit}>
-        <h2>Contact Me</h2>
+        {/* <h2>Contact Me</h2> */}
         <div className="input-box">
           <label>Name</label>
           <input
             type="text"
             className="field"
-            placeholder="Enter your name"
+            // placeholder="Enter your name"
             name="name"
             required
           />
@@ -58,7 +59,7 @@ function Contact({ refProps }) {
           <input
             type="email"
             className="field"
-            placeholder="Enter your email"
+            // placeholder="Enter your email"
             name="email"
             required
           />
@@ -68,7 +69,7 @@ function Contact({ refProps }) {
           <textarea
             name="message"
             className="field mess"
-            placeholder="Enter your message"
+            // placeholder="Enter your message"
             required
           ></textarea>
           <input

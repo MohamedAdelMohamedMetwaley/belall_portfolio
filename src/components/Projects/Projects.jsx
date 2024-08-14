@@ -56,27 +56,26 @@ function Projects({ refProps }) {
   }
   //TODO: create case study websites for second and third project
   return (
-    <section
-      ref={refProps}
-      id="projects"
-      onMouseLeave={() => {
-        moveRef.current.animate(
-          { transform: "scale(0)", opacity: 0 },
-          { duration: 300, fill: "forwards" }
-        );
-      }}
-      onMouseEnter={() => {
-        moveRef.current.animate(
-          { transform: "scale(1)", opacity: 1 },
-          { duration: 300, fill: "forwards" }
-        );
-      }}
-    >
+    <section ref={refProps} id="projects">
       <h2>Projects</h2>
       <div id="move" ref={moveRef}>
         {moveContent}
       </div>
-      <div className={styles.projectsList}>
+      <div
+        className={styles.projectsList}
+        onMouseLeave={() => {
+          moveRef.current.animate(
+            { transform: "scale(0)", opacity: 0 },
+            { duration: 300, fill: "forwards" }
+          );
+        }}
+        onMouseEnter={() => {
+          moveRef.current.animate(
+            { transform: "scale(1)", opacity: 1 },
+            { duration: 300, fill: "forwards" }
+          );
+        }}
+      >
         <ul>
           <a href="https://strawrecycling1.durablesites.com/?pt=NjY2ZTE0YjMwZTlkNjUxOTE1MGJkYjdmOjE3MTg1MTkxMDkuMDQ1OnByZXZpZXc=">
             <li className={styles.projectCard} onMouseEnter={handleHoverStraw}>
