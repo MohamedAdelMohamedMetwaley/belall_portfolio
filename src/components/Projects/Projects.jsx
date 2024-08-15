@@ -8,7 +8,7 @@ function Projects({ refProps }) {
   const [moveContent, setMoveContent] = useState(null);
 
   useEffect(function () {
-    document.body.onpointermove = (event) => {
+    refProps.current.onpointermove = (event) => {
       const { clientX, clientY } = event;
       const offsetX = clientX > window.innerWidth / 2 ? -650 : 50;
       const offsetY = clientY > window.innerHeight * 0.55 ? -380 : 50;

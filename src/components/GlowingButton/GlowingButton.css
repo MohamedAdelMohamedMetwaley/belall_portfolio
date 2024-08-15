@@ -67,7 +67,7 @@
 
 .glow-blur {
   filter: blur(var(--glow-blur-size));
-  stroke: var(--glow-blur-color);
+  stroke: linear-gradient(to right, red, yellow);
   stroke-width: var(--glow-blur-size);
 }
 
