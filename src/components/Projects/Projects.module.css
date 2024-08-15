@@ -45,13 +45,6 @@
   color: var(--text-color);
 }
 
-.projectsList .projectCard h2 {
-  /* height: 100%; */
-  font-size: 4rem;
-  font-weight: 400;
-  min-width: fit-content;
-}
-
 .projectsList hr {
   background-color: rgb(13 13 13 / 1);
   height: 1px;

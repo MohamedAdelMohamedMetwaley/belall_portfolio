@@ -16,7 +16,7 @@ function App() {
   };
 
   return (
-    <>
+    <main className="content-grid">
       <Navbar
         onScrollToSection={onScrollToSection}
         headerRef={headerRef}
@@ -31,7 +31,7 @@ function App() {
       <Skills refProps={skillsRef} />
       <Projects refProps={projectsRef} />
       <Contact refProps={contactRef} />
-    </>
+    </main>
   );
 }
 

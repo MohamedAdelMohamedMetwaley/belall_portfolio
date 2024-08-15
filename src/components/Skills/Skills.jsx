@@ -1,11 +1,9 @@
-import CurvedSectionDivider from "../CurvedSectionDivider/CurvedSectionDivider";
 import styles from "./Skills.module.css";
 
 function Skills({ refProps }) {
   return (
-    <section ref={refProps} id="skills">
-      <CurvedSectionDivider fill="#111" />
-      {/* <h1>Skills</h1> */}
+    <section className="full-width" ref={refProps} id="skills">
+      <h2>Skills</h2>
       <div className={styles.certSlider}>
         <ul style={{ "--time": "13s", "--quantity": 5 }}>
           <li

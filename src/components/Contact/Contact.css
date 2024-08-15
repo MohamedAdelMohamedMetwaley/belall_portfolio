@@ -1,17 +1,12 @@
 #contact {
-  /* display: flex; */
-  padding: 0 50px;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
+  min-height: fit-content;
 }
 
 form {
   max-width: 800px;
   width: 100%;
-  padding: 25px 25px 30px;
   border-radius: 8px;
-  margin: 25px;
+  margin-bottom: 50px;
 }
 
 form .input-box {

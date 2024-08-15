@@ -3,7 +3,11 @@ import styles from "./Header.module.css";
 
 function Header({ refProps, onScroll }) {
   return (
-    <section ref={refProps} className={styles.section} id="home">
+    <section
+      ref={refProps}
+      className={`${styles.section} full-width`}
+      id="home"
+    >
       <div className={styles.introContainer}>
         <h1>Hello, I&apos;m Belall</h1>
         <p>

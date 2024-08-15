@@ -1,5 +1,4 @@
 import styles from "./Projects.module.css";
-import CurvedSectionDivider from "../CurvedSectionDivider/CurvedSectionDivider";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useRef } from "react";
@@ -12,10 +11,11 @@ function Projects({ refProps }) {
     document.body.onpointermove = (event) => {
       const { clientX, clientY } = event;
       const offsetX = clientX > window.innerWidth / 2 ? -650 : 50;
+      const offsetY = clientY > window.innerHeight * 0.55 ? -380 : 50;
       moveRef.current.animate(
         {
           left: `${clientX + offsetX}px`,
-          top: `${clientY + 50}px`,
+          top: `${clientY + offsetY}px`,
         },
         { duration: 1000, fill: "forwards" }
       );
@@ -54,7 +54,7 @@ function Projects({ refProps }) {
   }
   //TODO: create case study websites for second and third project
   return (
-    <section ref={refProps} id="projects">
+    <section className={`full-width`} ref={refProps} id="projects">
       <h2>Projects</h2>
       <div id="move" ref={moveRef}>
         {moveContent}
@@ -101,7 +101,6 @@ function Projects({ refProps }) {
           </li>
         </ul>
       </div>
-      <CurvedSectionDivider fill="#111" isRotated={true} />
     </section>
   );
 }

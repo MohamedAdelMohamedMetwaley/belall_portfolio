@@ -1,6 +1,5 @@
 import "./Contact.css";
 import Swal from "sweetalert2";
-import GlowingButton from "../GlowingButton/GlowingButton";
 
 const access_key = "";
 const EMAIL = "";
@@ -41,7 +40,7 @@ function Contact({ refProps }) {
   };
 
   return (
-    <section ref={refProps} id="contact">
+    <section className="breakout" ref={refProps} id="contact">
       <form onSubmit={onSubmit}>
         {/* <h2>Contact Me</h2> */}
         <div className="input-box">
