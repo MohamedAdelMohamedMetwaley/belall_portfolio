@@ -115,8 +115,8 @@ function Navbar({
       <div
         className="highlight"
         style={{
-          left: `${highlightPosition * SCALE}px`,
-          width: `${highlightWidth * SCALE}px`,
+          "--left": `${highlightPosition * SCALE}px`,
+          "--width": `${highlightWidth * SCALE}px`,
         }}
       />
       <ul>
@@ -137,6 +137,7 @@ function Navbar({
 }
 
 export default Navbar;
+
 function sectionInView(sections, currentSection) {
   const middle = window.scrollY + document.documentElement.clientHeight / 3;
   let currentSectionTop;

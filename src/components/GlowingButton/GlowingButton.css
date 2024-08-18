@@ -67,7 +67,7 @@
 
 .glow-blur {
   filter: blur(var(--glow-blur-size));
-  stroke: linear-gradient(to right, red, yellow);
+  stroke: var(--glow-blur-color);
   stroke-width: var(--glow-blur-size);
 }
 
@@ -84,4 +84,8 @@
   75% {
     opacity: 1;
   }
+}
+
+svg {
+  max-width: unset !important;
 }

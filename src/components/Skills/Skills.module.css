@@ -8,9 +8,38 @@
   align-items: center;
 }
 
+:global(.skills-grid) {
+  width: 50%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  margin-block: 60px;
+  text-align: center;
+}
+
+:global(.skill-card) {
+  background-color: #ffcb70; /* Accent color */
+  color: #111; /* Text color on accent background */
+  padding: 20px;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+:global(.skill-card) > p {
+  padding-top: 20px;
+}
+
+:global(.skill-card:hover) {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
 .certSlider {
   width: 100%;
-  height: 200px;
+  height: 300px;
+  margin-top: 60px;
   overflow-x: clip;
 }
 
@@ -24,7 +53,7 @@
   right: 100%;
   animation: slideLeft var(--time) linear infinite;
   animation-delay: calc(
-    ((var(--time) / var(--quantity))) * (var(--index) - 1) - 13s
+    (var(--time) / var(--quantity)) * (var(--index) - 1) - 13s
   );
   transition: 0.5s;
 }
@@ -32,28 +61,43 @@
 .certSlider > ul:hover > li {
   filter: grayscale(1);
   animation-play-state: paused;
-  scale: 0.6;
+  scale: 0.8;
 }
 
 .certSlider > ul > li:hover {
   filter: grayscale(0);
-  scale: 2;
-}
-
-.certSlider > ul > li:hover + li {
-  transform: translateX(-100px);
-}
-.certSlider > ul > li:has(+ li:hover) {
-  transform: translateX(100px);
+  scale: 1.2;
 }
 
 .certSlider > ul > li > img {
   aspect-ratio: 1.29;
   height: 200px;
+  max-width: unset;
   border-radius: var(--radius);
+  cursor: pointer;
 }
 @keyframes slideLeft {
   to {
     right: -300px;
+  }
+}
+@media (width < 1280px) {
+  :global(.skills-grid) {
+    width: 60%;
+  }
+}
+@media (width < 1024px) {
+  :global(#skills) h2 {
+    margin-top: 60px;
+  }
+  :global(.skills-grid) {
+    grid-template-columns: 1fr 1fr;
+    width: 80%;
+  }
+}
+
+@media (width < 360px) {
+  :global(.skills-grid) {
+    grid-template-columns: 1fr;
   }
 }

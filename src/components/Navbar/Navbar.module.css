@@ -35,7 +35,7 @@
   color: white;
   border: none;
   background: none;
-  font-size: 16px;
+  font-size: var(--font-m);
   font-weight: var(--bold);
   padding: 20px;
   -webkit-touch-callout: none;
@@ -49,13 +49,16 @@
 
 :global(.highlight) {
   position: absolute;
+  --temp-width: var(--width);
   opacity: 0;
-  bottom: 5px;
+  top: 50%;
+  left: var(--left);
+  width: var(--width);
   height: 48px;
-  border-radius: var(--radius);
+  border-radius: 20px;
   background-color: var(--highlight-color);
-  transition: 0.3s ease-in-out;
-  transform: translateX(-50%);
+  transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+  transform: translate(-50%, -50%);
   animation: fadeInNavbar 1s 1s forwards;
 }
 
@@ -86,15 +89,15 @@
   }
 }
 
-@media (width < 600px) {
+@media (width < 410px) {
   .navbar {
-    --nav-width: 480px;
+    --nav-width: 90%;
   }
   .navbar ul li button {
-    font-size: 20px;
-    padding: 25px;
+    font-size: var(--font-s);
+    padding: 15px;
   }
   :global(.highlight) {
-    height: 62px;
+    display: none;
   }
 }

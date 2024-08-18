@@ -1,5 +1,4 @@
 :global(#projects) {
-  background-color: var(--bg-color2);
   background-color: var(--bg-color);
 
   position: relative;
@@ -8,7 +7,6 @@
 }
 
 :global(#projects) > h2 {
-  color: var(--text-color2);
   color: var(--text-color);
   font-size: 5rem;
   width: fit-content;
@@ -41,7 +39,6 @@
 }
 
 .projectsList .projectCard:hover {
-  color: var(--text-color2);
   color: var(--text-color);
 }
 
@@ -103,4 +100,18 @@
   grid-column-start: span 2;
   grid-row-start: 2;
   margin: 15px;
+}
+
+@media (width < 625px) {
+  :global(#projects) > h2 {
+    font-size: 4rem;
+  }
+
+  .projectsList .projectCard {
+    height: 12rem;
+    gap: 60px;
+  }
+  .projectCard h2 {
+    font-size: 2rem;
+  }
 }
