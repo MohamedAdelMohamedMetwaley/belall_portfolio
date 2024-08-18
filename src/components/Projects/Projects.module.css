@@ -26,7 +26,7 @@
 }
 
 .projectsList .projectCard {
-  height: 20rem;
+  height: 25rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -64,7 +64,7 @@
   justify-items: center;
   align-items: center;
   position: fixed;
-  width: max(30%, 300px);
+  width: 400px;
   /* height: 320px; */
   /* min-width: fit-content; */
   min-height: fit-content;
@@ -89,8 +89,8 @@
   grid-column-start: 1;
   margin-bottom: var(--spacing);
 }
-:global(#move) img {
-  height: min-content;
+:global(#move) video {
+  /* height: min-content; */
   border-radius: var(--radius);
   /* height: 100%; */
   width: 100%;

@@ -6,18 +6,19 @@ import { useRef } from "react";
 function Projects({ refProps }) {
   const moveRef = useRef();
   const [moveContent, setMoveContent] = useState(null);
+  const videoRef = useRef();
 
   useEffect(function () {
     refProps.current.onpointermove = (event) => {
       const { clientX, clientY } = event;
-      const offsetX = clientX > window.innerWidth / 2 ? -650 : 50;
-      const offsetY = clientY > window.innerHeight * 0.55 ? -380 : 50;
+      // const offsetX = clientX > window.innerWidth / 2 ? -550 : 50;
+      // const offsetY = clientY > window.innerHeight * 0.55 ? -300 : 50;
       moveRef.current.animate(
         {
-          left: `${clientX + offsetX}px`,
-          top: `${clientY + offsetY}px`,
+          left: `${clientX + 50}px`,
+          top: `${clientY + 50}px`,
         },
-        { duration: 1000, fill: "forwards" }
+        { duration: 200, fill: "forwards" }
       );
     };
   }, []);
@@ -25,7 +26,16 @@ function Projects({ refProps }) {
   function handleHoverStraw() {
     setMoveContent(
       <>
-        <img src="./images/straw.png" alt="straw-recycling" />
+        {/* <img src="./images/straw.png" alt="straw-recycling" /> */}
+        <video
+          ref={videoRef}
+          src="./video/clip1.mp4"
+          autoPlay
+          playsInline
+          muted
+          loop
+          onCanPlay={() => (videoRef.current.playbackRate = 2)}
+        />
         {/* <p>
           Straw Recycling is a company committed to creating a greener future.
           We offer innovative and sustainable solutions to combat plastic
@@ -39,7 +49,17 @@ function Projects({ refProps }) {
   function handleHoverMediator() {
     setMoveContent(
       <>
-        <img src="./images/mediator.png" alt="mediator-app" />
+        {/* <img src="./images/mediator.png" alt="mediator-app" />
+         */}
+        <video
+          ref={videoRef}
+          src="./video/clip2.mp4"
+          autoPlay
+          playsInline
+          muted
+          loop
+          onCanPlay={() => (videoRef.current.playbackRate = 2)}
+        />
         {/* <p>
           Bridging the Gap Between Doctors and Patients Mediator is a healthcare
           application designed to streamline patient care and minimize
@@ -50,7 +70,18 @@ function Projects({ refProps }) {
     );
   }
   function handleHoverBiber() {
-    setMoveContent(<img src="./images/biber.png" alt="biber-project" />);
+    setMoveContent(
+      // <img src="./images/biber.png" alt="biber-project" />
+      <video
+        ref={videoRef}
+        src="./video/clip3.mp4"
+        autoPlay
+        playsInline
+        muted
+        loop
+        onCanPlay={() => (videoRef.current.playbackRate = 2)}
+      />
+    );
   }
   //TODO: create case study websites for second and third project
   return (
