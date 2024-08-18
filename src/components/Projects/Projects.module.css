@@ -64,7 +64,7 @@
   justify-items: center;
   align-items: center;
   position: fixed;
-  width: 600px;
+  width: max(30%, 300px);
   /* height: 320px; */
   /* min-width: fit-content; */
   min-height: fit-content;
@@ -103,6 +103,9 @@
 }
 
 @media (width < 625px) {
+  :global(#move) {
+    display: none;
+  }
   :global(#projects) > h2 {
     font-size: 4rem;
   }

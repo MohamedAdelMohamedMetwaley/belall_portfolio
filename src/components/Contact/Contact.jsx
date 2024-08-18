@@ -2,7 +2,7 @@ import "./Contact.css";
 import Swal from "sweetalert2";
 
 const access_key = "";
-const EMAIL = "";
+const EMAIL = "belallomar28@gmail.com";
 
 function Contact({ refProps }) {
   const onSubmit = async (event) => {
