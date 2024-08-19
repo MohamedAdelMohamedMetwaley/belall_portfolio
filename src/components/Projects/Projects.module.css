@@ -52,6 +52,9 @@
   color: inherit;
   text-decoration: none;
 }
+.hr1 {
+  display: none;
+}
 
 @keyframes moveText {
   to {
@@ -84,6 +87,9 @@
   -ms-user-select: none;
   user-select: none;
 }
+.projectVideo {
+  display: none;
+}
 
 :global(#move) h2 {
   grid-column-start: 1;
@@ -107,14 +113,50 @@
     display: none;
   }
   :global(#projects) > h2 {
-    font-size: 4rem;
+    font-size: 3rem;
+  }
+  .projectCard h2:not(:first-child) {
+    display: none;
+  }
+  .hr1 {
+    display: block;
+    margin-top: 20px;
+  }
+
+  .projectCard h2:first-child {
+    padding: 20px 30px;
+  }
+
+  .projectCard .projectVideo {
+    display: block;
+    padding-block: 1rem;
+    width: 50%;
+    height: 100%;
+  }
+
+  .videoContainer {
+    border-radius: var(--radius);
+    overflow: clip;
+    margin-right: 20px;
+    width: 100%;
+    height: 100%;
+  }
+
+  .projectCard video {
+    width: 100%;
+    height: 100%;
+    object-fit: unset;
   }
 
   .projectsList .projectCard {
     height: 12rem;
-    gap: 60px;
+    gap: 0px;
+    max-width: 95%;
+    animation: none;
+    justify-content: space-between;
+    align-items: start;
   }
   .projectCard h2 {
-    font-size: 2rem;
+    font-size: 1.2rem;
   }
 }

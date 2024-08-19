@@ -106,12 +106,26 @@ function Projects({ refProps }) {
         }}
       >
         <ul>
+          <hr className={styles.hr1} />
           <a href="https://strawrecycling1.durablesites.com/?pt=NjY2ZTE0YjMwZTlkNjUxOTE1MGJkYjdmOjE3MTg1MTkxMDkuMDQ1OnByZXZpZXc=">
             <li className={styles.projectCard} onMouseEnter={handleHoverStraw}>
               <h2>Straw Recycling</h2>
               <h2>Straw Recycling</h2>
               <h2>Straw Recycling</h2>
               <h2>Straw Recycling</h2>
+              <div className={styles.projectVideo}>
+                <div className={styles.videoContainer}>
+                  <video
+                    ref={videoRef}
+                    src="./video/clip1.mp4"
+                    // autoPlay
+                    playsInline
+                    muted
+                    loop
+                    onCanPlay={() => (videoRef.current.playbackRate = 2)}
+                  />
+                </div>
+              </div>
             </li>
           </a>
           <hr />
@@ -121,6 +135,19 @@ function Projects({ refProps }) {
             <h2>Mediator App</h2>
             <h2>Mediator App</h2>
             <h2>Mediator App</h2>
+            <div className={styles.projectVideo}>
+              <div className={styles.videoContainer}>
+                <video
+                  ref={videoRef}
+                  src="./video/clip2.mp4"
+                  // autoPlay
+                  playsInline
+                  muted
+                  loop
+                  onCanPlay={() => (videoRef.current.playbackRate = 2)}
+                />
+              </div>
+            </div>
           </li>
           <hr />
           <li className={styles.projectCard} onMouseEnter={handleHoverBiber}>
@@ -129,6 +156,19 @@ function Projects({ refProps }) {
             <h2>Biber Project</h2>
             <h2>Biber Project</h2>
             <h2>Biber Project</h2>
+            <div className={styles.projectVideo}>
+              <div className={styles.videoContainer}>
+                <video
+                  ref={videoRef}
+                  src="./video/clip3.mp4"
+                  // autoPlay
+                  playsInline
+                  muted
+                  loop
+                  onCanPlay={() => (videoRef.current.playbackRate = 2)}
+                />
+              </div>
+            </div>
           </li>
         </ul>
       </div>

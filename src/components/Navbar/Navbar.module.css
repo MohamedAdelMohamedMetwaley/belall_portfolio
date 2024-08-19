@@ -1,10 +1,11 @@
 .navbar {
-  --bg-color: var(--grey);
+  --bg-color: 51, 51, 51;
   --highlight-color: var(--grey2);
   --reveal-color: var(--light-grey);
   --nav-width: 400px;
   width: 0px;
-  background-color: var(--bg-color);
+  background-color: rgba(var(--bg-color), 0.8);
+  backdrop-filter: blur(20px);
   border-radius: var(--radius);
   position: fixed;
   top: 20px;
@@ -97,6 +98,27 @@
     font-size: var(--font-s);
     padding: 15px;
   }
+  :global(.active) {
+    transition: 0.5s;
+    /* background-color: var(--grey2); */
+  }
+  :global(.active):after {
+    content: "";
+    position: absolute;
+    inset: 5px -6px;
+    inset: 0;
+    /* border-radius: var(--radius); */
+    z-index: -1;
+    transition: 2s;
+    animation: highlighIn 0.5s forwards;
+  }
+
+  @keyframes highlighIn {
+    to {
+      background-color: var(--grey2);
+    }
+  }
+
   :global(.highlight) {
     display: none;
   }

@@ -55,7 +55,7 @@ function Navbar({
       if (navTimeoutId.current) {
         clearTimeout(navTimeoutId.current);
       }
-      //Hide the navbar after two seconds of not scrolling
+      //Hide the navbar after three seconds of not scrolling
       navTimeoutId.current = setTimeout(() => {
         setNavIsHidden(true);
       }, 3000);
@@ -73,6 +73,7 @@ function Navbar({
   }, [isScrolling, hoveredElement, sections, navTimeoutId, navIsHidden]);
 
   const handleMouseEnter = (section) => {
+    clearTimeout(navTimeoutId.current);
     if (!isScrolling) {
       dispatch({ type: section });
       setHoveredElement(section);

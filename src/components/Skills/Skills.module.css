@@ -18,8 +18,8 @@
 }
 
 :global(.skill-card) {
-  background-color: #ffcb70; /* Accent color */
-  color: #111; /* Text color on accent background */
+  background-color: #ffffff; /* Accent color */
+  color: var(--grey); /* Text color on accent background */
   padding: 20px;
   border-radius: 10px;
   font-size: 1.2rem;
@@ -93,6 +93,15 @@
   :global(.skills-grid) {
     grid-template-columns: 1fr 1fr;
     width: 80%;
+  }
+}
+
+@media (width < 625px) {
+  :global(#skills) h2 {
+    font-size: 3rem;
+  }
+  :global(.skill-card) {
+    font-size: var(--font-s);
   }
 }
 
