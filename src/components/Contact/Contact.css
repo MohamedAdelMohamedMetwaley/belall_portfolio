@@ -1,0 +1,67 @@
+#contact {
+  min-height: fit-content;
+}
+
+form {
+  max-width: 800px;
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 50px;
+}
+
+form .input-box {
+  margin-top: 1.5rem;
+}
+
+form label {
+  color: var(--text-color);
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.input-box .field {
+  width: 100%;
+  height: 50px;
+  background: transparent;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
+  padding: 1rem;
+  font-size: 1rem;
+  color: var(--text-color);
+  margin-bottom: var(--spacingx);
+  margin-top: var(--spacing);
+  border-width: 0px 0px 1px 0px;
+  border-color: var(--text-color);
+  transition: 0.2s;
+}
+
+.input-box .field.mess {
+  height: 100px;
+  resize: vertical;
+}
+
+.input-box .field:focus {
+  outline: none;
+  border-color: var(--yellow);
+}
+
+form button {
+  height: 55px;
+  padding: 12px 24px 12px 24px;
+  background: var(--btn-color);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  color: var(--btn-text-color);
+  --btn-color: var(--text-color);
+  font-weight: 600;
+  margin-top: 1.5rem;
+  transition: 0.3s;
+  letter-spacing: 1px;
+}
+
+form button:hover {
+  transform: translateY(-5px);
+}

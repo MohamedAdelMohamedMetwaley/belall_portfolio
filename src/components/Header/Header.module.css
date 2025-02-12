@@ -1,0 +1,68 @@
+.section {
+  background: linear-gradient(
+    180deg,
+    rgba(35, 42, 64, 0.6),
+    rgba(35, 42, 64, 0) 50%
+  );
+}
+
+.section > :global(.breakout) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+:global(#home) {
+  opacity: 0;
+  animation: fadeIn 2s forwards;
+}
+
+:global(#home) h1 {
+  font-size: var(--font-3x);
+  margin: var(--spacing) 0;
+}
+
+:global(#home) p {
+  font-size: var(--font-2m);
+  color: var(--light-grey);
+}
+
+.introContainer {
+  padding-inline: 30px;
+}
+
+.imageContainer img {
+  width: 400px;
+  max-width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: var(--radius);
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* lg */
+@media (max-width: 1024px) {
+  .section :global(.breakout) {
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .introContainer {
+    margin-block: 100px 50px;
+  }
+  :global(#home) .introContainer h1 {
+    font-size: 3rem;
+  }
+  
+  :global(#home) .introContainer p {
+    font-size: var(--font-m);
+  }
+  :global(#home) .introContainer button {
+    font-size: var(--font-m);
+  }
+}

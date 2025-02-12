@@ -1,0 +1,125 @@
+.navbar {
+  --bg-color: 51, 51, 51;
+  --highlight-color: var(--grey2);
+  --reveal-color: var(--light-grey);
+  --nav-width: 400px;
+  width: 0px;
+  background-color: rgba(var(--bg-color), 0.8);
+  backdrop-filter: blur(20px);
+  border-radius: var(--radius);
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  translate: -50%;
+  z-index: 10;
+  overflow: hidden;
+  animation: revealNavbar 1s ease-out forwards;
+  transition: 1s;
+}
+
+.navbar ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  animation: fadeInNavbar 1s ease-in forwards;
+}
+
+.navbar ul li {
+  position: relative;
+}
+
+.navbar ul li button {
+  cursor: pointer;
+  color: white;
+  border: none;
+  background: none;
+  font-size: var(--font-m);
+  font-weight: var(--bold);
+  padding: 20px;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+:global(.highlight) {
+  position: absolute;
+  --temp-width: var(--width);
+  opacity: 0;
+  top: 50%;
+  left: var(--left);
+  width: var(--width);
+  height: 48px;
+  border-radius: 20px;
+  background-color: var(--highlight-color);
+  transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+  transform: translate(-50%, -50%);
+  animation: fadeInNavbar 1s 1s forwards;
+}
+
+.hidden {
+  translate: -50% -100px;
+}
+
+@keyframes revealNavbar {
+  0% {
+    width: 0;
+  }
+  0%,
+  60% {
+    border-right: 7px solid var(--reveal-color);
+    border-left: 7px solid var(--reveal-color);
+  }
+  100% {
+    width: var(--nav-width);
+  }
+}
+
+@keyframes fadeInNavbar {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@media (width < 410px) {
+  .navbar {
+    --nav-width: 90%;
+  }
+  .navbar ul li button {
+    font-size: var(--font-s);
+    padding: 15px;
+  }
+  :global(.active) {
+    transition: 0.5s;
+    /* background-color: var(--grey2); */
+  }
+  :global(.active):after {
+    content: "";
+    position: absolute;
+    inset: 5px -6px;
+    inset: 0;
+    /* border-radius: var(--radius); */
+    z-index: -1;
+    transition: 2s;
+    animation: highlighIn 0.5s forwards;
+  }
+
+  @keyframes highlighIn {
+    to {
+      background-color: var(--grey2);
+    }
+  }
+
+  :global(.highlight) {
+    display: none;
+  }
+}
